@@ -1,0 +1,277 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('images/bg_image8.jpeg');
+  background-size: cover;           /* scales to cover full page */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;     /* optional: creates a parallax effect */
+  font-family: sans-serif;          /* optional: clean font */
+}
+
+
+/* container for all on-top content */
+.content {
+  position: relative;
+  z-index: 1;          /* above the image */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+/*-------------------------*/
+/*     PROFILE IMAGE       */
+/*-------------------------*/
+
+.profile-wrapper {
+  width: 100%;
+  max-width: 500px;   /* desktop cap */
+  margin: 0 auto;     /* center on page */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.img-container {
+  width: 100%;        /* fills wrapper */
+  overflow: hidden;
+}
+
+.center-img {
+  display: block;
+  width: 100%;        /* keeps aspect ratio */
+  height: auto;
+}
+
+/*inner image frame, sized by the image */
+.img-container .img-frame {
+  position: relative;
+  display: inline-block;     /* shrink-wrap to the img */
+  z-index: 1;
+}
+
+/* your photo stays the same */
+.img-frame .center-img {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.img-container .overlay-title {
+  position: absolute;
+  bottom: 0;                  /* hug the very bottom edge */
+  left: 0;                    /* start at the container’s left edge */
+  right: 0;                   /* stretch to the right edge */
+  z-index: 2;
+  box-sizing: border-box;    /* include padding within the left/right bounds */
+  color: #fff;
+  text-shadow:
+    /* tight white highlight around each letter */
+    0 0 2px rgba(255,255,255,0.8),
+    /* first purple glow ring */
+    0 0 4px #B53389,
+    /* outer soft purple haze */
+    0 0 8px #B53389;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  font-size: 1.50rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.pdescription {
+  width: 100%;        /* now matches image exactly */
+  max-width: 500px;
+  box-sizing: border-box;
+  margin: -0.25rem 0 0; 
+  text-align: center;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  letter-spacing: 0.02em;       /* tightens the text a hair */
+  color: #fff;  /* solid white text */
+  -webkit-text-stroke: 0.5px rgba(0,0,0,0.5);
+  background: rgba(25, 8, 22, 0.815); /* semi-opaque background */
+  padding: 0.3em 0.5em;
+  border-radius: 0;
+}
+
+/*-------------------------*/
+/*      WEBPAGE LINKS      */
+/*-------------------------*/
+.button-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: clamp(280px, 90%, 500px);
+  margin: 1rem auto;             /* small vertical margin + center */
+  padding: 0 1rem;               /* keep 1rem side padding */
+}
+
+/* make room for the icon + text */
+.button-nav .btn {
+  position: relative;            /* establish a positioning context */
+  display: inline-flex;      /* allow icon + text alignment */
+  align-items: center;
+  justify-content: center;       /* center the *text* in the middle */
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: #66003C;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: #2f011c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+  box-sizing: border-box; /* ensure padding doesn’t break width */
+}
+
+.button-nav .btn-text {
+  display: inline-block;               /* lets us transform just the text */
+  transition: transform 0.2s ease-in-out;
+  transform-origin: center center;
+}
+
+.button-nav .btn:hover .btn-text {
+  transform: scale(1.1);                /* grow to 110% */
+  font-weight: 600;
+}
+
+/* hover state stays the same */
+.button-nav .btn:hover {
+  /*background: #DA70D5;
+   background: #880086;
+  background: #B53389;
+  background: #702963;
+  background: #66033C;
+  background: #8D4585;
+  background: #B783A7;
+  background: #66033C;
+  background: #78174bbc;
+  background: #66033C*/
+  background: rgba(0,0,0,0.6);
+}
+
+/* new: size & space the icon */
+.button-nav .btn-icon {
+  position: absolute;        /* remove from flex flow */
+  left: 1.5rem;              /* align to left padding edge */
+  top: 50%;                  /* vertically center */
+  transform: translateY(-50%);
+  width: 2em;                /* matches the font-size */
+  height: 2em;
+  flex-shrink: 0;            /* don’t let the icon shrink */
+  fill: currentColor;        /* for inline SVG */
+  /* if you used <img>, you can add:
+     object-fit: contain;
+     vertical-align: middle;
+  */
+}
+
+.button-nav .btn-share-icon {
+  position: absolute;
+  right: 0.2rem;            /* same distance from right edge as the left icon */
+  top: 50%;                
+  transform: translateY(-50%);
+  width: 2em;               /* match your left-icon size (or tweak as desired) */
+  height: 2em;
+  flex-shrink: 0;
+}
+
+/* make this the positioning parent */
+.btn-wrapper {
+  position: relative;
+  display: block; /* or inline-block if you prefer */
+}
+
+/* reuse your existing share-icon rules */
+.btn-wrapper .btn-share-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.2rem;       /* same as before */
+  transform: translateY(-50%);
+  width: 2em;
+  height: 2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*-------------------------*/
+/*   SOCIAL MEDIA LINKS    */
+/*-------------------------*/
+.social-links {
+  display: flex;
+  flex-wrap: wrap;               /* allow multiple rows if needed */
+  justify-content: center;       /* center the whole block */
+  gap: 1rem;                     /* space between each icon */
+  margin-top: 1rem;            /* space above the icons */
+  margin-bottom: 1.5rem;           /* space above the icons */
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;                   /* icon container size */
+  height: 48px;
+}
+
+.social-links a img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*-------------------------*/
+/*         FOOTER          */
+/*-------------------------*/
+
+/* 1) Footer base styles */
+footer {
+  background: #000;        /* your footer background */
+  padding: 1rem 0;         /* vertical spacing */
+}
+
+/* Centering container */
+.footer-container {
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center;     /* vertical centering if you set a height */
+}
+
+/* The text block */
+.footer-container .website {
+  color: #fff;             /* white text */
+  text-align: center;
+  white-space: nowrap;     /* keep it all on one line */
+  font-size: 0.7rem;       /* adjust size as needed */
+}
+
+/* Link styling */
+.cs-bottom-link {
+  display: inline;         /* hug the text, don’t stretch full-width */
+  color: #DA70D5;          /* your purple */
+  text-decoration: none;   /* no underline by default */
+  transition: color 0.2s;
+}
+
+/* Hover effect */
+.cs-bottom-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #B783A7;             /* brighten on hover (optional) */
+}
+
+/* If on very narrow screens you need to shrink it */
+@media (max-width: 350px) {
+  .footer-container .website {
+    font-size: 0.8rem;
+  }
+}

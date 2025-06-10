@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sharelink Taylor Swift</title>
+  <link rel="stylesheet" href="sharelink.css">
+</head>
+<body>
+  <div class="share-box">
+
+    <!-- WRAP IMAGE & OVERLAY INSIDE THE SAME STRUCTURE YOU HAVE IN INDEX.HTML -->
+    <div class="img-container">
+      <div class="img-frame">
+        <!-- still point at the same image -->
+        <img id="shareImg"
+            src="images/taylor.jpg"
+            alt="taylor portrait"
+            class="center-img">
+        <!-- overlay-title now goes here -->
+        <div class="overlay-title" id="shareTitleOverlay"></div>
+      </div>
+      <p id="shareDesc" class="pdescription"></p>
+    </div>
+
+    
+    
+    <small id="shareUrl"></small>
+
+    <div class="action-icons">
+      <a id="lnCopy" href="#" class="icon-btn" title="Copy link">
+      <img src="images/copylink_icon.png" alt="Copy link">
+      <span class="icon-label">Copy link</span>
+      </a>
+      <a id="lnEmbed" href="#" class="icon-btn" title="Embed">
+      <img src="images/embed_icon.png" alt="Embed link">
+      <span class="icon-label">Embed link</span>
+      </a>
+    </div>
+
+    <div class="icons-row">
+      <a id="lnTG" href="#" target="_blank"><img src="images/telegram_icon.png" alt="Telegram"></a>
+      <a id="lnX" href="#" target="_blank"><img src="images/x_icon.png" alt="X"></a>
+      <a id="lnTT" href="#" target="_blank"><img src="images/tiktok_icon.png" alt="Tiktok"></a>
+      <a id="lnIG" href="#" target="_blank"><img src="images/insta_icon.png" alt="Instagram"></a>
+      <a id="lnFB" href="#" target="_blank"><img src="images/fb_icon.png" alt="Facebook"></a>
+      <a id="lnYT" href="#" target="_blank"><img src="images/youtube_icon.png" alt="YouTube"></a>
+    </div>
+
+    <!-- TOAST CONTAINER: COPY/EMBED MESSAGES -->
+    <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  </div>
+
+  <script src="sharelink.js" defer></script>
+
+</body>
+</html>
